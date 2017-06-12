@@ -174,7 +174,6 @@ int main(int argc, char* args[])
 	rect5.h = 400;
 
 
-
 	bool verify1 = false;
 	bool verify2 = false;
 	bool verify3 = false;
@@ -203,12 +202,12 @@ int main(int argc, char* args[])
 				{
 					SDL_RenderClear(gRenderer);
 					SDL_RenderCopy(gRenderer,gTexture,NULL,NULL);
-					SDL_RenderPresent(gRenderer);
+					//SDL_RenderPresent(gRenderer);
 
 					if(e.type == SDL_QUIT)
 							quit = true;
 
-					else if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP  )
+					else if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP )
 					{
 						int x;
 						int y;
@@ -219,64 +218,68 @@ int main(int argc, char* args[])
 						{
 							verify1 = true;
 							SDL_RenderCopy(gRenderer,textureX,NULL,&rect1);
-							SDL_RenderPresent(gRenderer);
+							//SDL_RenderPresent(gRenderer);
 
+						}
+						else if (x >= 0 && x<= 200 && y >= 0 && y <= 200)
+						{
+							verify1 = true;
+							SDL_RenderCopy(gRenderer,textureO,NULL,&rect1);
 						}
 						else if (x >= 200 && x <= 400 && y >= 0 && y <= 200)
 						{
 							verify2=true;
 							SDL_RenderCopy(gRenderer,textureO,NULL,&rect2);
-							SDL_RenderPresent(gRenderer);
+						}
+						else if (x >= 200 && x <= 400 && y >= 0 && y <= 200)
+						{
+							verify2=true;
+							SDL_RenderCopy(gRenderer,textureX,NULL,&rect2);
 						}
 						else if (x >= 400 && x <= 600 && y >= 0 && y <= 200)
 						{
 							verify3=true;
 							SDL_RenderCopy(gRenderer,textureX,NULL,&rect3);
-							SDL_RenderPresent(gRenderer);
 						}
 						else if (x >= 0 && x <= 200 && y >= 200 && y <= 400)
 						{
 							verify4 = true;
 							SDL_RenderCopy(gRenderer,textureO,NULL,&rect4);
-							SDL_RenderPresent(gRenderer);
 						}
 						else if (x >= 200 && x <= 400 && y >= 200 && y <= 400)
 						{
 							verify5 = true;
 							SDL_RenderCopy(gRenderer,textureX,NULL,&rect5);
-							SDL_RenderPresent(gRenderer);
 						}
 						else if (x >= 400 && x <= 600 && y >= 200 && y <= 400)
 						{
 							verify6 = true;
 							SDL_RenderCopy(gRenderer,textureO,NULL,&rect6);
-							SDL_RenderPresent(gRenderer);
 						}
 						else if (x >= 0 && x <= 200 && y >= 400 && y <= 600)
 						{
 							verify7 = true;
 							SDL_RenderCopy(gRenderer,textureX,NULL,&rect7);
-							SDL_RenderPresent(gRenderer);
 						}
 						else if (x >= 200 && x <= 400 && y >= 400 && y <= 600)
 						{
 							verify8 = true;
 							SDL_RenderCopy(gRenderer,textureO,NULL,&rect8);
-							SDL_RenderPresent(gRenderer);
 						}
 						else if (x >= 400 && x <= 600 && y >= 400 && y <= 600)
 						{
 							verify9 = true;
 							SDL_RenderCopy(gRenderer,textureX,NULL,&rect9);
-							SDL_RenderPresent(gRenderer);
 						}
+						SDL_RenderPresent(gRenderer);
+
 					}
 
 				}
 				if (verify1)
 					SDL_RenderCopy(gRenderer,textureX,NULL,&rect1);
 
-				if (verify2)
+				if (verify2 )
 					SDL_RenderCopy(gRenderer,textureO,NULL,&rect2);
 
 				if (verify3)
@@ -306,14 +309,6 @@ int main(int argc, char* args[])
 
 		}
 	}
-
-
-
-
-
-
-
-
 
 	close();
 	return 0;
